@@ -1,4 +1,7 @@
 defmodule Acai.Checkout do
+  use ServerInterface
+
+  @impl ServerInterface
   def child_spec(opts) do
     Supervisor.child_spec(
       %{
@@ -9,6 +12,7 @@ defmodule Acai.Checkout do
     )
   end
 
+  @impl ServerInterface
   def start_link(opts) do
     ConsumerSupervisor.start_link(
       __MODULE__.Supervisor,

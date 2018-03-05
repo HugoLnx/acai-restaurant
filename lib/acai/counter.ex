@@ -1,16 +1,9 @@
 defmodule Acai.Counter do
+  use ServerInterface
+
   @table_name __MODULE__
 
-  def child_spec(opts) do
-    Supervisor.child_spec(
-      %{
-        id: __MODULE__,
-        start: {__MODULE__, :start_link, [opts]}
-      },
-      []
-    )
-  end
-
+  @impl ServerInterface
   def start_link(_) do
     GenServer.start_link(__MODULE__.Server, @table_name, name: __MODULE__)
   end

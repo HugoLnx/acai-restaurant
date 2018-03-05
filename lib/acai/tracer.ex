@@ -1,23 +1,14 @@
 defmodule Acai.Tracer do
-  @tracer_name :tracer
+  use ServerInterface
 
-  def child_spec(opts) do
-    Supervisor.child_spec(
-      %{
-        id: __MODULE__,
-        start: {__MODULE__, :start_link, [[]]}
-      },
-      []
-    )
-  end
-
-  def start_link(_) do
-    GenServer.start_link(__MODULE__.Server, nil, name: @tracer_name)
+  @impl ServerInterface
+  def start_link(arg) do
+    GenServer.start_link(__MODULE__.Server, arg, name: __MODULE__)
   end
 
   def register(process_name) do
-    {:ok, {_process_name, pid}} = GenServer.call(@tracer_name, {:register, process_name})
-    tracer_pid = Process.whereis(@tracer_name)
+    {:ok, {_process_name, pid}} = GenServer.call(__MODULE__, {:register, process_name})
+    tracer_pid = Process.whereis(__MODULE__)
     :erlang.trace(pid, true, [:receive, :procs, :timestamp, {:tracer, tracer_pid}])
   end
 end

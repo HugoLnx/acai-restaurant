@@ -1,4 +1,7 @@
 defmodule Acai.Stock do
+  use ServerInterface
+
+  @impl ServerInterface
   def child_spec(opts) do
     Supervisor.child_spec(
       %{
@@ -9,6 +12,7 @@ defmodule Acai.Stock do
     )
   end
 
+  @impl ServerInterface
   def start_link(opts) do
     GenStage.start_link(__MODULE__.Server, opts[:name], name: opts[:name])
   end
