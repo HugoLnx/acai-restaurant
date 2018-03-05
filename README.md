@@ -1,11 +1,34 @@
 # Acai Restaurant
 A simple application that using GenStage and trace the events for studying purposes.
 
-## Overview
+## Stages Overview
 ```
-           pulps              acais                   spawn
-[Stock] ----------> [Chef] ------------> [Checkout] >>>>>>>>> Checkout.Task
-producer       producer-consumer          consumer               task
+    [ Stock ]
+     producer
+       ||
+       ||
+       ||  (pulps)
+       ||
+       ||
+       \/
+     [Chef]
+producer-consumer
+       ||
+       ||
+       ||  (acais)
+       ||
+       ||
+       \/
+   [Checkout]
+ConsumerSupervisor
+       ||
+       ||
+       ||  (spawn)
+       ||
+       ||
+       \/
+ [Checkout.Task]
+      Task
 ```
 
 ## Tracing Logs
