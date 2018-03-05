@@ -12,7 +12,6 @@ defmodule Acai.Checkout do
     )
   end
 
-  @impl ServerInterface
   def start_link(opts) do
     ConsumerSupervisor.start_link(
       __MODULE__.Supervisor,

@@ -14,7 +14,7 @@ defmodule Acai.Tracer.Server do
 
   def handle_info(
         {:trace_ts, spawner_pid, :spawn, spawned_pid,
-         {_, _, [_, _, _, _, [_, {task_module, _, args}]]}, timestamp},
+         {_, _, [_, _, _, _, [_, {task_module, _, args}]]}, _timestamp},
         %{processes: processes} = state
       ) do
     Acai.Tracer.Logger.log_supervisor_spawn_message(%{
@@ -27,8 +27,8 @@ defmodule Acai.Tracer.Server do
   end
 
   def handle_info(
-        {:trace_ts, pid, tracing_type,
-         {_message_namespace, {message_sender_pid, _monitor}, message}, timestamp},
+        {:trace_ts, pid, _tracing_type,
+         {_message_namespace, {message_sender_pid, _monitor}, message}, _timestamp},
         %{processes: processes} = state
       ) do
     Acai.Tracer.Logger.log_genstage_message(%{
@@ -40,7 +40,7 @@ defmodule Acai.Tracer.Server do
     {:noreply, state}
   end
 
-  def handle_info(msg, state) do
+  def handle_info(_msg, state) do
     # IO.inspect(msg)
     {:noreply, state}
   end

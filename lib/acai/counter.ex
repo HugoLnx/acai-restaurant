@@ -3,7 +3,6 @@ defmodule Acai.Counter do
 
   @table_name __MODULE__
 
-  @impl ServerInterface
   def start_link(_) do
     GenServer.start_link(__MODULE__.Server, @table_name, name: __MODULE__)
   end

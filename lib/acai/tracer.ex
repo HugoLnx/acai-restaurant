@@ -1,7 +1,6 @@
 defmodule Acai.Tracer do
   use ServerInterface
 
-  @impl ServerInterface
   def start_link(arg) do
     GenServer.start_link(__MODULE__.Server, arg, name: __MODULE__)
   end
