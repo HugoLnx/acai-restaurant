@@ -1,0 +1,5 @@
+%{
+  "dbg": {:hex, :dbg, "1.0.1", "9c29813e5df8b4d275325416523d511e315656b8ac27a60519791f9cf476d83d", [:mix], [], "hexpm"},
+  "gen_stage": {:hex, :gen_stage, "0.13.1", "edff5bca9cab22c5d03a834062515e6a1aeeb7665fb44eddae086252e39c4378", [:mix], [], "hexpm"},
+  "logger_file_backend": {:hex, :logger_file_backend, "0.0.10", "876f9f84ae110781207c54321ffbb62bebe02946fe3c13f0d7c5f5d8ad4fa910", [:mix], [], "hexpm"},
+}
