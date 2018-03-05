@@ -1,5 +1,12 @@
-# Acai Restaurant
-A simple application that using GenStage and trace the events for studying purposes.
+<h1 align="center">Açaí Restaurant</h1>
+
+<p align="center">
+  <img alt="Açaí Restaurant" src="https://github.com/hugolnx/acai-restaurant/blob/master/assets/acai.png?raw=true" width="128">
+</p>
+
+<p align="center">
+  A simple application using GenStage that trace process messages for studying purposes.
+</p>
 
 ## Stages Overview
 ```
