@@ -3,8 +3,8 @@ defmodule Acai.FileLogger do
     path = "./logs/"
 
     dir_exists?(path)
-      |> verify_dir()
-      |> write_to_file(name, msg)
+    |> verify_dir()
+    |> write_to_file(name, msg)
   end
 
   defp dir_exists?(path) do
