@@ -26,8 +26,6 @@ defmodule Acai.FileLogger do
   end
 
   defp write_to_file(path, name, msg) do
-    filename = "#{name}.log"
-
     io_list = [
       pretty_shorttime(:erlang.system_time()),
       to_string(name),
@@ -36,7 +34,8 @@ defmodule Acai.FileLogger do
       "\n"
     ]
 
-    File.write!(path <> filename, io_list, [:append])
+    Path.join(path, "#{name}.log")
+    |> File.write!(io_list, [:append])
   end
 
   defp pretty_shorttime(time) do
